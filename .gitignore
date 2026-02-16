@@ -1,0 +1,48 @@
+# ============================
+#   Python
+# ============================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+
+# ============================
+#   Jupyter
+# ============================
+.ipynb_checkpoints/
+*.ipynb~
+.notebooks_cache/
+
+# ============================
+#   Docker
+# ============================
+*.log
+.env
+.env.*
+docker-data/
+docker-volumes/
+docker-compose.override.yml
+
+# ============================
+#   OS / Editor files
+# ============================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# ============================
+#   Cache / Temp
+# ============================
+.mypy_cache/
+.cache/
+*.tmp
+*.temp
+
+# ============================
+#   Workspace (local only)
+# ============================
+workspace/
+notebooks/*-checkpoint.ipynb
