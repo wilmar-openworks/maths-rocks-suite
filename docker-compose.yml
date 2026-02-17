@@ -1,0 +1,25 @@
+# ============================================================
+#  🔢 MATH's ROCK's SUITE — Suite Matemática Local con Docker
+# ============================================================
+
+networks:
+  mathnet:
+    driver: bridge
+
+volumes:
+  jupyter_data:
+
+services:
+  jupyterbase:
+    build:
+      context: ./docker/base
+    container_name: maths-rocks-jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/home/jovyan/work
+    command: >
+      jupyter lab
+      --ip=0.0.0.0
+      --no-browser
+      --allow-root
