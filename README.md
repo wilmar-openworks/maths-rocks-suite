@@ -254,6 +254,37 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ---
 
+## 🧬 Hybrid Architecture (Current State)
+
+The suite currently uses a hybrid model:
+
+- The **Scientific Module** provides a complete environment based on the `datascience-notebook` image, which includes Python, Julia and R preinstalled.
+- This allows rapid development and immediate access to multiple kernels.
+- However, the long‑term architecture of the suite is **modular**, where each language will have its own isolated environment.
+
+### Why hybrid?
+This approach provides the best of both worlds:
+- Fast progress today
+- Clean modularity tomorrow
+
+### Current layout
+```
+base → scientific (python + julia + r)
+```
+
+### Future layout
+```
+base → python → julia → r → octave → gap → ...
+```
+
+### Transition plan
+- Keep Julia and R inside the Scientific Module for now
+- Introduce standalone modules gradually
+- Reduce the Scientific Module to Python only
+- Maintain compatibility during the transition
+
+---
+
 ## 🧩 Modularization Plan (Future)
 
 The current Scientific Module includes Python, Julia and R because they are bundled inside the `datascience-notebook` base image.
@@ -266,6 +297,7 @@ However, future versions of the suite will adopt a fully modular architecture wh
 - Ability to upgrade Python, Julia or R without affecting the others
 - Clear contribution model for collaborators
 - Reproducibility and scientific traceability
+- Better reproducibility for scientific work
 
 ### Modularization Strategy
 1. **Keep Julia and R inside the Scientific Module for now**
