@@ -193,6 +193,41 @@ This module establishes the foundation for future language environments such as 
 
 ---
 
+## 🧮 SageMath Module (Future)
+
+SageMath is a full Computer Algebra System (CAS) that integrates hundreds of mathematical libraries into a unified environment.
+It provides advanced capabilities in:
+
+- algebra
+- number theory
+- combinatorics
+- geometry
+- optimization
+- symbolic computation
+
+### Why a standalone module?
+SageMath is large, specialized and independent from Python, Julia or R.
+For this reason, it will be implemented as a dedicated module with its own Dockerfile and kernel.
+
+### Planned structure
+```
+docker/
+  sagemath/
+    Dockerfile
+```
+
+### Base image
+The module will use the official image:
+
+
+### Kernel integration
+The module will register the SageMath kernel for JupyterLab, allowing notebooks with:
+
+
+### Status
+⏳ Pending — planned for future development
+
+---
 
 ## 🧪 Planned Modules (coming soon)
 
@@ -239,8 +274,9 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 - ✅ Add base Docker + Jupyter environment
 - 🚧 Add Python scientific stack (Scientific Module)
-- ⏳ Add Julia kernel (active by default)
-- ⏳ Add R kernel (active by default)
+- 🚧 Add Julia kernel (active by default)
+- 🚧 Add R kernel (active by default)
+- 🚧 Add SageMath Module
 - ⏳ Add Octave and GAP
 - ⏳ Improve documentation and examples
 - ⏳ Add dashboard module
@@ -290,6 +326,8 @@ base → python → julia → r → octave → gap → ...
 The current Scientific Module includes Python, Julia and R because they are bundled inside the `datascience-notebook` base image.
 However, future versions of the suite will adopt a fully modular architecture where each language has its own isolated environment.
 
+The suite currently uses a hybrid model: The Scientific Module (based on `datascience-notebook`) includes Python, Julia and R preinstalled. This enables rapid development, but the long‑term goal is a fully modular architecture.
+
 ### Why modularize?
 - Independent version control for each language
 - Faster builds and lighter images
@@ -310,13 +348,13 @@ However, future versions of the suite will adopt a fully modular architecture wh
    - its own kernel registration
    - its own documentation section
 
-3. **Gradually reduce the Scientific Module**
+3. **Add SageMath as a fully independent module** SageMath is a complete CAS and must remain isolated.
+
+4. **Gradually reduce the Scientific Module**
    Over time, the Scientific Module will focus exclusively on Python.
 
-4. **Long‑term goal**
+5. **Long‑term goal / Final architecture**
    A fully modular suite:
    ```
    base → python → julia → r → octave → gap → sagemath → maxima → ...
    ```
-
-

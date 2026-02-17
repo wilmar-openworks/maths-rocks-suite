@@ -8,6 +8,7 @@ networks:
 
 volumes:
   jupyter_data:
+  sage_data:
 
 services:
   # ─────────────────────────────────────────────
@@ -23,10 +24,34 @@ services:
       - JUPYTER_ENABLE_LAB=yes
       - JUPYTER_TOKEN=maths-rocks-2026
       - GRANT_SUDO=yes
-    volumes:      
+    volumes:
       - jupyter_data:/home/jovyan/work
       - ./notebooks:/home/jovyan/work/notebooks
       - ./data:/home/jovyan/work/data
       - ./config/jupyterlab/jupyter_lab_config.py:/home/jovyan/.jupyter/jupyter_lab_config.py
     networks:
       - mathnet
+
+  # ─────────────────────────────────────────────
+  # 2. SageMath — CAS Matemático Completo
+  # ─────────────────────────────────────────────
+  sagemath:
+    build:
+      context: ./docker/sagemath      
+    container_name: maths-rocks-sagemath
+    restart: unless-stopped
+    ports:
+      - "8890:8888"
+    volumes:
+      - sage_data:/home/sage
+      - ./sage-notebooks:/home/sage/notebooks
+      - ./data:/home/sage/data
+    networks:
+      - mathnet
+    command: >
+      sage -n jupyterlab 
+           --ip=0.0.0.0 
+           --port=8888 
+           --no-browser 
+           --NotebookApp.token=maths-rocks-2026 
+           --notebook-dir=/home/sage/notebooks
