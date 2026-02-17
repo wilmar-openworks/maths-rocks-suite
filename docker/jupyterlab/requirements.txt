@@ -1,0 +1,17 @@
+sympy
+numpy
+scipy
+matplotlib
+pandas
+scikit-learn
+plotly
+bokeh
+networkx
+numba
+mpmath
+pymc
+statsmodels
+seaborn
+ipympl
+ipywidgets
+jupyterlab-git

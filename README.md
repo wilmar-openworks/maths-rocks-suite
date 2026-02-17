@@ -81,10 +81,121 @@ Access Jupyter at http://localhost:8888
 - JupyterLab as unified interface
 - Git-flow development model
 - Clean separation of services and configuration
+- Python scientific stack
+
+---
+
+## 🧪 Scientific Module (Python) 🐍 🔬 🧬 📊 🧠
+
+**English**
+The Scientific Module provides a complete Python-based scientific environment built on top of the `datascience-notebook` image. It includes numerical computing, symbolic math, statistics, visualization, probabilistic modeling and JupyterLab integration.
+
+**Español**
+El Módulo Científico ofrece un entorno científico basado en Python, construido sobre la imagen `datascience-notebook`. Incluye cómputo numérico, matemáticas simbólicas, estadística, visualización, modelado probabilístico e integración con JupyterLab.
+
+---
+
+### 📦 Included Scientific Stack
+
+- NumPy
+- SciPy
+- SymPy
+- Pandas
+- Matplotlib
+- Seaborn
+- Scikit‑Learn
+- Statsmodels
+- Plotly
+- Bokeh
+- NetworkX
+- Numba
+- Mpmath
+- PyMC
+- ipywidgets / ipympl
+- jupyterlab-git
+
+All dependencies are managed through `requirements.txt`.
+
+---
+
+### 🐳 Docker Integration
+
+The module is built from:
+
+```
+docker/jupyterlab/Dockerfile
+docker/jupyterlab/requirements.txt
+```
+
+It registers a dedicated Python kernel:
+
+```
+Python 3 (Maths Rocks)
+```
+
+---
+
+### 🔌 docker-compose Service
+
+The Scientific Module is exposed as the main JupyterLab service:
+
+```yaml
+jupyterlab:
+  build:
+    context: ./docker/jupyterlab
+  container_name: maths-rocks-jupyterlab
+  ports:
+    - "8888:8888"
+  volumes:
+    - jupyter_data:/home/jovyan/work
+    - ./notebooks:/home/jovyan/work/notebooks
+    - ./data:/home/jovyan/work/data
+    - ./config/jupyterlab/jupyter_lab_config.py:/home/jovyan/.jupyter/jupyter_lab_config.py
+```
+
+---
+
+### 🚀 Usage
+
+Start the environment:
+
+```bash
+docker-compose up -d --build
+```
+
+Access JupyterLab at:
+
+```
+http://localhost:8888
+```
+
+---
+
+### 📁 Directory Structure
+
+```
+docker/
+  jupyterlab/
+    Dockerfile
+    requirements.txt
+config/
+  jupyterlab/
+    jupyter_lab_config.py
+notebooks/
+data/
+```
+
+---
+
+### 🧭 Purpose
+
+This module establishes the foundation for future language environments such as Julia, R, Octave and GAP, following the modular architecture of the suite.
+
+---
+
 
 ## 🧪 Planned Modules (coming soon)
 
-- Python scientific stack
 - Julia kernel: High-performance dynamic language for technical computing.
 - R kernel
 - GNU Octave: High-level language for numerical computations.
@@ -126,12 +237,18 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ## 📅 Roadmap (short)
 
-- Add base Docker + Jupyter environment  
-- Add Python scientific stack  
-- Add Julia kernel  
-- Add R kernel  
-- Add Octave and GAP  
-- Improve documentation and examples  
-- Add dashboard module  
+- ✅ Add base Docker + Jupyter environment
+- 🚧 Add Python scientific stack (Scientific Module)
+- ⏳ Add Julia kernel
+- ⏳ Add R kernel
+- ⏳ Add Octave and GAP
+- ⏳ Improve documentation and examples
+- ⏳ Add dashboard module
 
+### Status
+
+- ✅ Completed
+- 🚧 In progress
+- ⏳ Pending
+- ❌ Not started
 
