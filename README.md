@@ -239,16 +239,52 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 - ✅ Add base Docker + Jupyter environment
 - 🚧 Add Python scientific stack (Scientific Module)
-- ⏳ Add Julia kernel
-- ⏳ Add R kernel
+- ⏳ Add Julia kernel (active by default)
+- ⏳ Add R kernel (active by default)
 - ⏳ Add Octave and GAP
 - ⏳ Improve documentation and examples
 - ⏳ Add dashboard module
 
-### Status
+### Status Legend
 
 - ✅ Completed
 - 🚧 In progress
 - ⏳ Pending
 - ❌ Not started
+
+---
+
+## 🧩 Modularization Plan (Future)
+
+The current Scientific Module includes Python, Julia and R because they are bundled inside the `datascience-notebook` base image.
+However, future versions of the suite will adopt a fully modular architecture where each language has its own isolated environment.
+
+### Why modularize?
+- Independent version control for each language
+- Faster builds and lighter images
+- Cleaner architecture and better maintainability
+- Ability to upgrade Python, Julia or R without affecting the others
+- Clear contribution model for collaborators
+- Reproducibility and scientific traceability
+
+### Modularization Strategy
+1. **Keep Julia and R inside the Scientific Module for now**
+   They work, they are stable, and they allow rapid progress.
+
+2. **Introduce independent modules later**
+   Each module will have:
+   - its own Dockerfile
+   - its own dependencies
+   - its own kernel registration
+   - its own documentation section
+
+3. **Gradually reduce the Scientific Module**
+   Over time, the Scientific Module will focus exclusively on Python.
+
+4. **Long‑term goal**
+   A fully modular suite:
+   ```
+   base → python → julia → r → octave → gap → sagemath → maxima → ...
+   ```
+
 
