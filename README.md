@@ -278,6 +278,9 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 - 🚧 Add R kernel (active by default)
 - 🚧 Add SageMath Module
 - ⏳ Add Octave and GAP
+- ⏳ Add RStudio Server
+- ⏳ Add Maxima
+- ⏳ Add PostgreSQL and Adminer
 - ⏳ Improve documentation and examples
 - ⏳ Add dashboard module
 

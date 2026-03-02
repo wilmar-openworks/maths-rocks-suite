@@ -1,6 +1,11 @@
 # ============================================================
 #  🔢 MATH's ROCK's SUITE — Suite Matemática Local con Docker
 # ============================================================
+# Herramientas incluidas:
+#   1. JupyterLab          → Entorno principal (Python + Julia + R)
+#   2. SageMath            → Matemáticas avanzadas (Álgebra, Geometría, Teoría de Números)
+#   3. GNU Octave          → Alternativa libre a MATLAB
+# ============================================================
 
 networks:
   mathnet:
@@ -9,6 +14,7 @@ networks:
 volumes:
   jupyter_data:
   sage_data:
+  octave_data:
 
 services:
   # ─────────────────────────────────────────────
@@ -44,8 +50,8 @@ services:
       - "8890:8888"
     volumes:
       - sage_data:/home/sage
-      - ./sage-notebooks:/home/sage/notebooks
-      - ./data:/home/sage/data
+      - ./notebooks/sage-notebooks:/home/sage/notebooks
+      - ./data/sage-data:/home/sage/data
     networks:
       - mathnet
     command: >
@@ -55,3 +61,21 @@ services:
            --no-browser 
            --NotebookApp.token=maths-rocks-2026 
            --notebook-dir=/home/sage/notebooks
+
+  # ─────────────────────────────────────────────
+  # 3. GNU Octave — Computación Numérica (MATLAB libre)
+  # ─────────────────────────────────────────────
+  octave:
+    build:
+      context: ./docker/octave
+      dockerfile: Dockerfile
+    container_name: maths-rocks-octave
+    restart: unless-stopped
+    ports:
+      - "8890:8888"   # 8890 host → 8888 contenedor
+    networks:
+      - mathnet
+    volumes:
+      - octave_data:/root/octave
+      - ./notebooks/octave-notebooks:/root/octave/notebooks
+      - ./data/octave-data:/root/octave/data

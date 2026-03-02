@@ -46,3 +46,5 @@ Thumbs.db
 # ============================
 workspace/
 notebooks/*-checkpoint.ipynb
+data/
+notebooks/
