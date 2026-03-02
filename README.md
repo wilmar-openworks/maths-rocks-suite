@@ -1,42 +1,24 @@
 # Math’s Rocks Suite  🧮
 
-**English**  
 A modular mathematical computing suite built with Docker and powered by Jupyter.  
 It provides isolated environments for multiple scientific languages (Python, Julia, R, Octave, GAP and more), enabling reproducible, multi‑language workflows for research, education and experimentation.
-
-**Español**  
-Suite matemática modular basada en Docker y potenciada por Jupyter.  
-Ofrece entornos aislados para múltiples lenguajes científicos (Python, Julia, R, Octave, GAP y más), permitiendo flujos reproducibles y multilenguaje para investigación, educación y experimentación.
 
 ---
 
 ## 🚀 Vision
 
-**English**  
 Create a unified, reproducible and extensible environment where mathematical tools from different ecosystems can coexist and be used seamlessly through Jupyter.
-
-**Español**  
-Crear un entorno unificado, reproducible y extensible donde herramientas matemáticas de distintos ecosistemas puedan convivir y usarse de forma integrada mediante Jupyter.
 
 ---
 
-## 🧱 Architecture (Base)
+## 🧱 General Architecture
 
-**English**  
 This repository starts with a backend‑first approach:
 - Docker‑based modular environments  
 - Jupyter as the central access point  
 - Independent language modules  
 - Shared volumes for notebooks and data  
 - Clean separation between configuration, scripts and services  
-
-**Español**  
-Este repositorio inicia con un enfoque backend‑first:
-- Entornos modulares basados en Docker  
-- Jupyter como punto central de acceso  
-- Módulos independientes por lenguaje  
-- Volúmenes compartidos para notebooks y datos  
-- Separación clara entre configuración, scripts y servicios  
 
 ---
 
@@ -46,11 +28,17 @@ Este repositorio inicia con un enfoque backend‑first:
 maths-rocks-suite/
 ├── docker/
 │   └── base/
+│   ├── jupyterlab/
+│   ├── sagemath/
+│   ├── octave/
+│   └── ...
 ├── config/
-│   └── jupyter/
+│   ├── jupyter/
+│   └── jupyterlab/
 ├── scripts/
 ├── notebooks/
 │   └── examples/
+├── data/
 ├── docs/
 └── docker-compose.yml
 ```
@@ -85,13 +73,9 @@ Access Jupyter at http://localhost:8888
 
 ---
 
-## 🧪 Scientific Module (Python) 🐍 🔬 🧬 📊 🧠
+## 🧪 Scientific Module (Python + Julia + R) 🐍 🔬 🧬 📊 🧠
 
-**English**
 The Scientific Module provides a complete Python-based scientific environment built on top of the `datascience-notebook` image. It includes numerical computing, symbolic math, statistics, visualization, probabilistic modeling and JupyterLab integration.
-
-**Español**
-El Módulo Científico ofrece un entorno científico basado en Python, construido sobre la imagen `datascience-notebook`. Incluye cómputo numérico, matemáticas simbólicas, estadística, visualización, modelado probabilístico e integración con JupyterLab.
 
 ---
 
@@ -113,6 +97,7 @@ El Módulo Científico ofrece un entorno científico basado en Python, construid
 - PyMC
 - ipywidgets / ipympl
 - jupyterlab-git
+- and others
 
 All dependencies are managed through `requirements.txt`.
 
@@ -193,7 +178,12 @@ This module establishes the foundation for future language environments such as 
 
 ---
 
-## 🧮 SageMath Module (Future)
+### Status
+⏳ Ready for testing
+
+---
+
+## 🧮 SageMath Module
 
 SageMath is a full Computer Algebra System (CAS) that integrates hundreds of mathematical libraries into a unified environment.
 It provides advanced capabilities in:
@@ -225,7 +215,7 @@ The module will register the SageMath kernel for JupyterLab, allowing notebooks 
 
 
 ### Status
-⏳ Pending — planned for future development
+⏳ Ready for testing
 
 ---
 
@@ -273,11 +263,11 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 ## 📅 Roadmap (short)
 
 - ✅ Add base Docker + Jupyter environment
-- 🚧 Add Python scientific stack (Scientific Module)
+- ✅ Add Python scientific stack (Scientific Module)
 - 🚧 Add Julia kernel (active by default)
 - 🚧 Add R kernel (active by default)
 - 🚧 Add SageMath Module
-- ⏳ Add Octave and GAP
+- 🚧 Add Octave and GAP
 - ⏳ Add RStudio Server
 - ⏳ Add Maxima
 - ⏳ Add PostgreSQL and Adminer
@@ -293,7 +283,7 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ---
 
-## 🧬 Hybrid Architecture (Current State)
+## 🧬 Hybrid Architecture (Current State) 🧩
 
 The suite currently uses a hybrid model:
 

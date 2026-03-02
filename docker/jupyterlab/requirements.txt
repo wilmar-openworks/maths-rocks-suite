@@ -15,3 +15,10 @@ seaborn
 ipympl
 ipywidgets
 jupyterlab-git
+xarray
+pyarrow
+polars
+tqdm
+rich
+jupyter-server-proxy
+jupyter-kernel-gateway

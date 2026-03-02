@@ -2,7 +2,7 @@
 #  🔢 MATH's ROCK's SUITE — Suite Matemática Local con Docker
 # ============================================================
 # Herramientas incluidas:
-#   1. JupyterLab          → Entorno principal (Python + Julia + R)
+#   1. JupyterLab          → Entorno científico principal (Python + Julia  + R)
 #   2. SageMath            → Matemáticas avanzadas (Álgebra, Geometría, Teoría de Números)
 #   3. GNU Octave          → Alternativa libre a MATLAB
 # ============================================================
@@ -47,7 +47,7 @@ services:
     container_name: maths-rocks-sagemath
     restart: unless-stopped
     ports:
-      - "8890:8888"
+      - "8889:8888"
     volumes:
       - sage_data:/home/sage
       - ./notebooks/sage-notebooks:/home/sage/notebooks

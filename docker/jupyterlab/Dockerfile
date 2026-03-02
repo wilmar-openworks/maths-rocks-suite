@@ -7,12 +7,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 COPY requirements.txt /tmp/
 RUN pip install --no-cache-dir --quiet -r /tmp/requirements.txt
 
-# Instala paquetes científicos pesados
-# RUN pip install --no-cache-dir --quiet \
-#     sympy numpy scipy matplotlib pandas scikit-learn \
-#     plotly bokeh networkx numba mpmath pymc statsmodels seaborn \
-#     ipympl ipywidgets jupyterlab-git
-
 # Register Python kernel (usually automatic, but explicit is safer)
 RUN python -m ipykernel install --user --name python3 --display-name "Python 3 (Maths Rocks)"
 
